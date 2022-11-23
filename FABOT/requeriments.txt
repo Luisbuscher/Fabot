@@ -1,0 +1,31 @@
+
+Bibliotecas:
+
+    discord.py version 1.7.3
+    mysql.connector
+
+OBS:
+
+    Caso for usar a biblioteca "discord.py" atualizada (versao 2+) deverá mudar alguns recursos na main e nas outras classes. Como:
+
+    Na MAIN:
+
+        async def load():
+            for filename in os.listdir('./commands'):
+                if filename.endswith('.py'):
+                    await bot.load_extension(f'commands.{filename[:-3]}')
+
+        async def main():
+            await load()
+            await bot.start('MTAxMTExMjYwNjQ5MDE4NTg5OA.GmKSfR.pUl7yC6TkpNYPSN4-zGjNEQ4KGiAUOJBe8uYCQ')
+
+        asyncio.run(main())
+
+    Nas outras classes:
+
+        # Deverá adicionar "async" e "await". EX:
+
+        async def setup(bot):
+            await bot.add_cog(Rpg(bot))
+
+Caso não esteja funcionando tente pesquisar videos recentes sobre os cogs ou outros comandos que foram modificados em novas atualizações, porém se não quiser ter dor de cabeça, utilize a biblioteca na versão 1.7.3. Abraço!
